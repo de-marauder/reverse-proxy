@@ -12,9 +12,9 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t simple-express .
-  - docker tag simple-express $DOCKER_USERNAME/simple-express:latest
+  - docker tag simple-express $DOCKER_USERNAME/simple-reverse-proxy:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push $DOCKER_USERNAME/simple-express
+  - docker push $DOCKER_USERNAME/simple-reverse-proxy
 
